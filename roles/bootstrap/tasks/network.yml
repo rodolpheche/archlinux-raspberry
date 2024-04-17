@@ -1,0 +1,5 @@
+- name: Setup dns configuration
+  ansible.builtin.copy:
+    content: nameserver 8.8.8.8
+    dest: /mnt/etc/resolv.conf
+    mode: '0644'

@@ -1,0 +1,43 @@
+name: Manual build
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch:
+          - armv7
+          - aarch64
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install requirements
+        run: |
+          sudo apt update
+          sudo apt install -y packer qemu-system-x86 ansible
+
+      - name: Packer build
+        run: |
+          packer init .
+          packer build -force -only=qemu.${{ matrix.arch }} .
+          cd dist/${{ matrix.arch }}
+          tar -zcvf archlinux-raspberry-${{ matrix.arch }}.img.tar.gz archlinux-raspberry-${{ matrix.arch }}.img
+
+      - name: Set now variable
+        run: echo "NOW=$(date +'%Y%m%d')" >> "$GITHUB_ENV"
+
+      - name: Release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: dist/${{ matrix.arch }}/archlinux-raspberry-${{ matrix.arch }}.img.tar.gz
+          tag: manual-${{ env.NOW }}

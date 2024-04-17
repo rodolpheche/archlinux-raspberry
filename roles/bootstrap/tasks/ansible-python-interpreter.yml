@@ -1,0 +1,5 @@
+- name: Create the bash chroot wrapper
+  ansible.builtin.copy:
+    src: ansible-python-interpreter-chroot-bash
+    dest: /tmp/
+    mode: '0755'

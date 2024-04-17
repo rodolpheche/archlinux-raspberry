@@ -1,0 +1,17 @@
+- name: Create boot partition
+  community.general.parted:
+    device: '{{ fs_device }}'
+    number: 1
+    flags:
+      - boot
+    fs_type: fat32
+    part_end: 512MiB
+    state: present
+
+- name: Create root partition
+  community.general.parted:
+    device: '{{ fs_device }}'
+    number: 2
+    fs_type: ext4
+    part_start: 512MiB
+    state: present

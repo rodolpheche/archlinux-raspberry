@@ -1,0 +1,8 @@
+- name: Include parted.yml
+  ansible.builtin.include_tasks: parted.yml
+
+- name: Include format.yml
+  ansible.builtin.include_tasks: format.yml
+
+- name: Include mount.yml
+  ansible.builtin.include_tasks: mount.yml

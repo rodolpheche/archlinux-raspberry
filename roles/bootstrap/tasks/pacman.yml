@@ -1,0 +1,13 @@
+- name: Init pacman
+  ansible.builtin.raw: |
+    pacman-key --init
+    pacman-key --populate archlinuxarm
+  args:
+    executable: /tmp/ansible-python-interpreter-chroot-bash
+  changed_when: true
+
+- name: Update system
+  ansible.builtin.raw: pacman -Syyu --noconfirm
+  args:
+    executable: /tmp/ansible-python-interpreter-chroot-bash
+  changed_when: true

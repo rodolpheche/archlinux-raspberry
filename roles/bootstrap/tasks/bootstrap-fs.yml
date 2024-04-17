@@ -1,0 +1,8 @@
+- name: Bootstrap fs
+  ansible.builtin.unarchive:
+    src: http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-{{ arch }}-latest.tar.gz
+    dest: /mnt
+    exclude:
+      - etc/fstab
+      - etc/resolv.conf
+    remote_src: true

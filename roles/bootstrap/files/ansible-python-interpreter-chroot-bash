@@ -1,0 +1,7 @@
+#!/bin/sh -e
+
+# copy ansible resources into chroot path
+cp -rf /mnt/.ansible /mnt/mnt/
+
+# bash interpreter for ansible raw plugin
+exec systemd-nspawn --pipe --timezone=off -D /mnt /usr/bin/bash "$@"

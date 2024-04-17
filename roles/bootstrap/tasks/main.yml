@@ -1,0 +1,17 @@
+- name: Include ansible-python-interpreter.yml
+  ansible.builtin.include_tasks: ansible-python-interpreter.yml
+
+- name: Include bootstrap-fs.yml
+  ansible.builtin.include_tasks: bootstrap-fs.yml
+
+- name: Include fstab.yml
+  ansible.builtin.include_tasks: fstab.yml
+
+- name: Include network.yml
+  ansible.builtin.include_tasks: network.yml
+
+- name: Include binfmt-misc.yml
+  ansible.builtin.include_tasks: binfmt-misc.yml
+
+- name: Include pacman.yml
+  ansible.builtin.include_tasks: pacman.yml

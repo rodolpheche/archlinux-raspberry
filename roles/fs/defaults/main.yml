@@ -1,0 +1,3 @@
+fs_device: /dev/vda
+fs_partition_boot: /dev/vda1
+fs_partition_root: /dev/vda2

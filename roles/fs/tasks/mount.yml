@@ -1,0 +1,15 @@
+# root partition
+- name: Mount root partition
+  ansible.posix.mount:
+    src: '{{ fs_partition_root }}'
+    path: /mnt
+    fstype: ext4
+    state: mounted
+
+# boot partition
+- name: Mount boot partition
+  ansible.posix.mount:
+    src: '{{ fs_partition_boot }}'
+    path: /mnt/boot
+    fstype: vfat
+    state: mounted

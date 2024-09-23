@@ -7,7 +7,7 @@ source "qemu" "aarch64" {
   cpus = 4
   memory = 4096
   format = "raw"
-  disk_size = "2500"
+  disk_size = "3000"
   iso_url = "https://mir.archlinux.fr/iso/latest/archlinux-x86_64.iso"
   iso_checksum = "file:https://mir.archlinux.fr/iso/latest/sha256sums.txt"
   ssh_username = "root"

@@ -1,5 +1,3 @@
 .history
 .vscode
 dist
-inventory/packer*
-manifest.json
